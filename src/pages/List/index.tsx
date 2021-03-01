@@ -40,7 +40,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
       ?
       {
         title: 'Entrada',
-        lineColor: '#f7931b',
+        lineColor: '#4e41f0',
         data: gains
       }
       :
