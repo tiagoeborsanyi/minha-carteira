@@ -49,7 +49,7 @@ const WalletBox: React.FC<IWalletBox> = ({
                     decimals={2}
                 />
             </h1>
-            <small>{footerlabel}</small>
+            <small>tete{footerlabel}</small>
             <img src={iconSelected} alt={title} />
         </Container>
     )
