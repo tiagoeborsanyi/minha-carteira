@@ -4,6 +4,7 @@ import SelectInput from '../../components/SelectInput';
 import ContentHeader from '../../components/ContentHeader';
 import WalletBox from '../../components/WalletBox';
 import MessageBox from '../../components/MessageBox';
+import PieChartBox from '../../components/PieChartBox';
 
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg';
@@ -104,7 +105,7 @@ const Dashboard: React.FC = () => {
         footerText: 'Tenha cuidade. No próximo mes tente poupar seu dinheiro.',
         icon: happyImg
       }
-    } else if (totalBalance> 0) {
+    } else if (totalBalance > 0) {
       return {
         title: 'Muito bem',
         description: 'Sua carteira esta positiva.',
@@ -113,6 +114,30 @@ const Dashboard: React.FC = () => {
       }
     }
   }, [totalBalance]);
+
+  const relationExpensesVersusGains = useMemo(() => {
+    const total = totalGains + totalExpenses;
+
+    const percentGain = (totalGains / total) * 100;
+    const percentExpenses = (totalExpenses / total) * 100;
+
+    const data = [
+      {
+        name: 'Entradas',
+        value: totalGains,
+        percent: Number(percentGain.toFixed(1)),
+        color: '#e44c4e'
+      },
+      {
+        name: 'Saídas',
+        value: totalExpenses,
+        percent: Number(percentExpenses.toFixed(1)),
+        color: '#f7931b'
+      }
+    ]
+
+    return data;
+  }, [totalGains, totalExpenses]);
 
   const handleMonthSelected = (month: string) => {
     try {
@@ -166,6 +191,7 @@ const Dashboard: React.FC = () => {
           footerText={message?.footerText}
           icon={message?.icon}
         />
+        <PieChartBox data={relationExpensesVersusGains} />
       </Content>
     </Container>
   );
