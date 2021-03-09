@@ -9,6 +9,7 @@ export const Container = styled.button`
   color: ${props => props.theme.colors.white};
   background-color: ${props => props.theme.colors.warning};
   transition: opacity .3s;
+  cursor: pointer;
 
   &:hover {
     opacity: .7;
