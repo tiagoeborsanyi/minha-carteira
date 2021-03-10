@@ -14,6 +14,13 @@ export const Container = styled.div`
   background-color: ${props => props.theme.colors.tertiary};
   color: ${props => props.theme.colors.white};
   border-radius: 7px;
+
+  @media(max-width: 1200px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+  }
 `;
 
 export const SideLeft = styled.aside`
@@ -41,6 +48,12 @@ export const LegendContainer = styled.ul`
   display: flex;
   flex-direction: column;
   padding-right: 16px;
+
+  @media(max-width: 1200px) {
+    display: flex;
+    flex-direction: row;
+    height: auto;
+  }
 `;
 
 export const Legend = styled.li<ILegendProps>`
